@@ -1,7 +1,6 @@
 package students.logic;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.Date;
@@ -79,8 +78,8 @@ public class ManagementSystem {
             stmt = con.createStatement();
             rs = stmt.executeQuery(
                     "SELECT student_id, firstName, patronymic, surName, " +
-                    "sex, dateOfBirth, group_id, educationYear FROM students " +
-                    "ORDER BY surName, firstName, patronymic");
+                            "sex, dateOfBirth, group_id, educationYear FROM students " +
+                            "ORDER BY surName, firstName, patronymic");
             while (rs.next()) {
                 Student st = new Student(rs);
                 students.add(st);
@@ -105,9 +104,9 @@ public class ManagementSystem {
         try {
             stmt = con.prepareStatement(
                     "SELECT student_id, firstName, patronymic, surName, " +
-                    "sex, dateOfBirth, group_id, educationYear FROM students " +
-                    "WHERE group_id=? AND educationYear=? " +
-                    "ORDER BY surName, firstName, patronymic");
+                            "sex, dateOfBirth, group_id, educationYear FROM students " +
+                            "WHERE group_id=? AND educationYear=? " +
+                            "ORDER BY surName, firstName, patronymic");
             stmt.setInt(1, group.getGroupId());
             stmt.setInt(2, year);
             rs = stmt.executeQuery();
@@ -133,7 +132,7 @@ public class ManagementSystem {
         try {
             stmt = con.prepareStatement(
                     "UPDATE students SET group_id=?, educationYear=? " +
-                    "WHERE group_id=? AND educationYear=?");
+                            "WHERE group_id=? AND educationYear=?");
             stmt.setInt(1, newGroup.getGroupId());
             stmt.setInt(2, newYear);
             stmt.setInt(3, oldGroup.getGroupId());
@@ -166,8 +165,8 @@ public class ManagementSystem {
         try {
             stmt = con.prepareStatement(
                     "INSERT INTO students " +
-                    "(firstName, patronymic, surName, sex, dateOfBirth, group_id, educationYear) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)");
+                            "(firstName, patronymic, surName, sex, dateOfBirth, group_id, educationYear) " +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?)");
             stmt.setString(1, student.getFirstName());
             stmt.setString(2, student.getPatronymic());
             stmt.setString(3, student.getSurName());
@@ -188,9 +187,9 @@ public class ManagementSystem {
         try {
             stmt = con.prepareStatement(
                     "UPDATE students SET " +
-                    "firstName=?, patronymic=?, surName=?, " +
-                    "sex=?, dateOfBirth=?, group_id=?, educationYear=? " +
-                    "WHERE student_id=?");
+                            "firstName=?, patronymic=?, surName=?, " +
+                            "sex=?, dateOfBirth=?, group_id=?, educationYear=? " +
+                            "WHERE student_id=?");
             stmt.setString(1, student.getFirstName());
             stmt.setString(2, student.getPatronymic());
             stmt.setString(3, student.getSurName());

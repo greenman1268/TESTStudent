@@ -82,7 +82,7 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
         // Делаем спин-поле
         // 1. Задаем модель поведения - только цифры
         // 2. Вставляем в панель
-        SpinnerModel sm = new SpinnerNumberModel(2006, 1900, 2100, 1);
+        SpinnerModel sm = new SpinnerNumberModel(2006, 1900, 2100, 1);//this val, min, max, step size
         spYear = new JSpinner(sm);
         // Добавляем листенер
         spYear.addChangeListener(this);
